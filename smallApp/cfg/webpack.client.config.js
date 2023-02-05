@@ -14,7 +14,7 @@ function setupDevtool(){
 module.exports= {
  resolve:{
    extensions:[
-     '.js', '.jsx', '.ts', 'tsx', 'json'
+     '.js', '.jsx', '.ts', '.tsx', '.json'
    ],
    alias:{
      'react-dom':IS_DEV ? '@hot-loader/react-dom':'react-dom'
@@ -31,7 +31,8 @@ module.exports= {
     publicPath: '/static/',
   },
   module:{
-    rules:[{
+    rules:[
+    {
       test:/\.[tj]sx?$/,
       use:['ts-loader']
     },
@@ -42,11 +43,9 @@ module.exports= {
           options:{
             modules:{
               mode:'local',
-              localIdentName:'[name]__[local]--[hash:base64:5]',
-              
+              localIdentName:'[name]__[local]--[hash:base64:5]',  
             }
           }
-        
       }
       ],
       exclude: GLOBAL_CSS_REGEXP
