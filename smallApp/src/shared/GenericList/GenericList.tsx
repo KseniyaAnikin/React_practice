@@ -4,7 +4,7 @@ import styles from './genericlist.css';
 interface IItem {
   id: string;
   text: string;
-  onClick: ( id: string) => void;
+  onClick?: ( id: string) => void;
   className?: string;
   As?: 'a' | 'button' | 'div';
   href? : string;
@@ -14,11 +14,12 @@ interface IGenericListProps {
   list: IItem[];
 }
 
+const NOOP = () =>{}
 
 export function GenericList({ list }: IGenericListProps) {
   return (
     <>
-    {list.map(({As = 'div',id, text, onClick, className , href})=>(
+    {list.map(({As = 'div',id, text, onClick = NOOP, className , href})=>(
       <As 
         className={className}
         onClick={() => onClick(id)}

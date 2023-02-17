@@ -12,8 +12,11 @@ export function Dropdown({button, children }: IDropdownProps) {
 
   return (
     <div className={styles.container}>
-    {/* определяем кнопку */}
-      <div onClick={()=> setIsDropdownOpen(!isDropdownOpen)}>{button}</div>
+      <div onClick={(e)=> {
+        e.stopPropagation();
+        setIsDropdownOpen(!isDropdownOpen);
+        }}>{button}</div>
+
       {isDropdownOpen && (
         <div className={styles.listContainer}>
           <div className={styles.list} onClick={()=> setIsDropdownOpen(false)}>

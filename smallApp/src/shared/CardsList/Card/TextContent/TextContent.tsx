@@ -1,6 +1,7 @@
 import React from 'react';
 import { DateInfo } from './DateInfo';
 import styles from './textcontent.css';
+import { preventDefault } from '../../../../utils/react/preventDefault'
 
 export function TextContent() {
   return (
@@ -14,7 +15,9 @@ export function TextContent() {
         <DateInfo/>
       </div>
       <h2 className={styles.title}>
-        <a href="#post-url" className={styles.postLink}>
+        <a href="#post-url" className={styles.postLink} onClick={(e) => {
+          e.preventDefault()
+        }}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio esse repellendus nemo soluta modi distinctio. Reprehenderit tempore, minima corporis quo enim cum hic esse ipsa possimus sequi, facere quia labore.
         </a>
       </h2>

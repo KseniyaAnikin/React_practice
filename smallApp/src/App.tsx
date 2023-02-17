@@ -35,12 +35,7 @@ function AppComponent(){
     <Content>
       <CardsList/>
       {/* <GenericList list={LIST.map( merge(({onClick: handleItemClick})))} /> */}
-      <div style={{padding: 20 }}>
-      <br/>
-    <Dropdown button={<button>Test</button>}>
-      <CardsList/>
-    </Dropdown>
-    </div>
+     
     </Content>
     </ Layout>
   )
