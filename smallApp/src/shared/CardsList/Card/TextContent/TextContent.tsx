@@ -15,9 +15,7 @@ export function TextContent() {
         <DateInfo/>
       </div>
       <h2 className={styles.title}>
-        <a href="#post-url" className={styles.postLink} onClick={(e) => {
-          e.preventDefault()
-        }}>
+        <a href="#post-url" className={styles.postLink}>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio esse repellendus nemo soluta modi distinctio. Reprehenderit tempore, minima corporis quo enim cum hic esse ipsa possimus sequi, facere quia labore.
         </a>
       </h2>

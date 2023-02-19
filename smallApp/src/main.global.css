@@ -47,3 +47,21 @@ button {
   background: transparent;
   cursor: pointer;
 }
+
+.list-item {
+  display: flex;
+  padding: 14px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #999999;
+}
+.lust-item {
+  justify-content: center;
+  color: #666;
+  background: #D9D9D9;
+}
+
+.list-item svg {
+  margin-right: 5px;
+}
