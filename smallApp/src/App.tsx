@@ -9,6 +9,7 @@ import { assignId, generateId, generateRandomString } from "./utils/react/genera
 import { GenericList } from "./shared/GenericList";
 import { merge } from "./utils/js/merge";
 import { Dropdown } from "./shared/Dropdown";
+import { EColors, Text } from "./shared/Text";
 
 
 const LIST = [
@@ -34,8 +35,10 @@ function AppComponent(){
     < Header/>
     <Content>
       <CardsList/>
-      {/* <GenericList list={LIST.map( merge(({onClick: handleItemClick})))} /> */}
-     
+     <br/>
+     <Text size={20} mobileSize={28} color={EColors.green} bold>Label1</Text>
+     <Text size={20}>Label2</Text>
+     <Text size={20} mobileSize={16}>Label3</Text>
     </Content>
     </ Layout>
   )
