@@ -5,6 +5,8 @@ import { Dropdown } from '../../../Dropdown';
 import { GenericList } from '../../../GenericList';
 import styles from './cardmenu.css';
 import  { MenuIcon } from '../../../Icons'
+import { EColors, Text } from '../../../Text';
+import { MenuItemsList } from './MenuItemsList';
 
 
 
@@ -27,18 +29,39 @@ const LIST = [
   {As: 'li' as const, text: 'Закрыть', className: 'list-item lust-item',}
 ].map(generateId)
 
-export function CardMenu() {
+// export function CardMenu() {
+//     return (
+//       <div className={styles.menu}>
+//         <Dropdown 
+//           button = {
+//             <button className={styles.menuButton}>
+//               <MenuIcon/>
+//             </button>
+//           }>            
+//           <GenericList list={LIST}/>
+//         </Dropdown>
+//       </div>
+//     );
+//   }
 
-    return (
-      <div className={styles.menu}>
-        <Dropdown 
-          button = {
-            <button className={styles.menuButton}>
-              <MenuIcon/>
-            </button>
-          }>            
-          <GenericList list={LIST}/>
-        </Dropdown>
-      </div>
-    );
-  }
+export function CardMenu() {
+  return (
+    <div className={styles.menu}>
+      <Dropdown 
+        button = {
+          <button className={styles.menuButton}>
+            <MenuIcon/>
+          </button>
+        }>            
+        <div className={styles.dropdown}>
+          <MenuItemsList/>
+          <button className={styles.closeButton}>
+            <Text mobileSize={12} size={14} color={EColors.gray66}>
+              Закрыть
+            </Text>
+          </button>
+        </div>
+      </Dropdown>
+    </div>
+  );
+}

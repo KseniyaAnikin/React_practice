@@ -19,26 +19,12 @@ const LIST = [
 ].map(generateId)
 
 function AppComponent(){
-  // const [list, setList] = React.useState(LIST);
-
-  // const handleItemClick = (id: string) => {
-  //   console.log(id)
-  //   // setList(list.filter((item)=> item.id !== id))
-  // }
-
-  // const hadleAdd = () => {
-  //   setList(list.concat(generateId({text : generateRandomString()})))
-  // }
 
   return(
     < Layout>
     < Header/>
     <Content>
       <CardsList/>
-     <br/>
-     <Text size={20} mobileSize={28} color={EColors.green} bold>Label1</Text>
-     <Text size={20}>Label2</Text>
-     <Text size={20} mobileSize={16}>Label3</Text>
     </Content>
     </ Layout>
   )
