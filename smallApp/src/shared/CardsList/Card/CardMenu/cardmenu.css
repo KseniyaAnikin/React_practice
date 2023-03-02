@@ -1,5 +1,6 @@
 .menu {
   position: absolute;
+  z-index: 100;
   top: 17px;
   right: 15px;
   padding: 0;
@@ -32,6 +33,23 @@
   padding: 12px 23px;
   border-radius: 0 0 3px 3px;
   width: 100%;
+}
+
+.divider {
+  height: 1px;
+  margin-top: 11px;
+  position: absolute;
+  bottom: 0;
+  left: 14px;
+  width: 80%;
+  background-color: var(--greyEC);
+}
+
+span {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #999999;
 }
 
 @media all and (min-width: 1024px) {

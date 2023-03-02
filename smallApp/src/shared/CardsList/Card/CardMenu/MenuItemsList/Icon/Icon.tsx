@@ -27,9 +27,11 @@ interface IIconsProps {
 }
 
 export function Icon({size, svg}: IIconsProps) {
- 
+  const classes = classNames(
+    styles[`s${size}`]
+  );
 
   return (
-    <div>{icon[svg]}</div>
+    <div className={classes}>{icon[svg]}</div>
   );
 }
