@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { hot } from "react-hot-loader/root";
 import { Layout } from "./shared/Layout";
 import { Header } from './shared/Header';
@@ -10,6 +10,7 @@ import { GenericList } from "./shared/GenericList";
 import { merge } from "./utils/js/merge";
 import { Dropdown } from "./shared/Dropdown";
 import { EColors, Text } from "./shared/Text";
+import { useToken } from "./hooks/useToken";
 
 
 const LIST = [
@@ -19,12 +20,13 @@ const LIST = [
 ].map(generateId)
 
 function AppComponent(){
+  const [token] = useToken();
 
   return(
     < Layout>
-    < Header/>
+    < Header  token = {token}/>
     <Content>
-      <CardsList/>
+    <CardsList/>
     </Content>
     </ Layout>
   )
