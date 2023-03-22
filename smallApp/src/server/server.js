@@ -4,9 +4,17 @@ import { App } from '../App.tsx';
 import {indexTemplate} from './indexTemplate';
 import axios from 'axios';
 const app = express();
+const cors = require('cors');
 
 
-app.use('/static', express.static('./dist/client'))
+app.use('/static', express.static('./dist/client'));
+// app.use(cors({
+//   'allowedHeaders': ['Authorization'],
+//   "origin": "*",
+//   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   "preflightContinue": false,
+// }))
+
 app.get('/',(req,res)=>{
   res.send(indexTemplate(ReactDOM.renderToString(App())))
 })

@@ -11,6 +11,7 @@ import { merge } from "./utils/js/merge";
 import { Dropdown } from "./shared/Dropdown";
 import { EColors, Text } from "./shared/Text";
 import { useToken } from "./hooks/useToken";
+import { tokenContext } from "./shared/context/tokenContext";
 
 
 const LIST = [
@@ -21,14 +22,17 @@ const LIST = [
 
 function AppComponent(){
   const [token] = useToken();
+  const { Provider } = tokenContext
 
   return(
-    < Layout>
-    < Header  token = {token}/>
-    <Content>
-    <CardsList/>
-    </Content>
-    </ Layout>
+    <Provider value={token}>
+      <Layout>
+        <Header/>
+        <Content>
+          <CardsList/>
+        </Content>
+      </Layout>
+    </Provider>
   )
 }
 
