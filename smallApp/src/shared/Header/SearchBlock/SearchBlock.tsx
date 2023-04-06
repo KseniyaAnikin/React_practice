@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './searchblock.css';
 import { UserBlock } from './UserBlock';
-import { useUserData } from '../../../hooks/useUserData';
+import { userContext } from '../../context/userContext';
 
-interface ISearchBlockProps {
-  token: string;
-}
 
-export function SearchBlock({ token }: ISearchBlockProps) {
-  const [data] = useUserData(token);
-  
+export function SearchBlock() {
+  const { iconImage, name } = useContext(userContext)
+
   return (
     <div className = {styles.searchBlock} >
-      <UserBlock avatarSrc={data.iconImage} username={data.name}/>
+      <UserBlock avatarSrc={iconImage} username={name}/>
     </div>
   );
 }

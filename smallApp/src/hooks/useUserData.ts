@@ -1,14 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
+import { tokenContext } from "../shared/context/tokenContext";
 
 interface IUserData {
   name?: string;
   iconImage?: string;
 }
 
-export function useUserData(token: string){
+export function useUserData(){
   //save user data
   const [ data, setData ] = useState<IUserData>({});
+  const token = useContext(tokenContext)
   // ask endpoint
   useEffect(()=>{
     axios.get('https://oauth.reddit.com/api/v1/me?raw_json=1',

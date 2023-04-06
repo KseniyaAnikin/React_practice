@@ -12,10 +12,11 @@ button {
   padding: 20px 20px 10px;
   display: flex;
   flex-flow: row wrap;
+  margin-bottom: 20px;
 }
-.card > *, .textContent > * {
+/* .card > *, .textContent > * {
   flex: 1 1 100%;
-}
+} */
 .card > * + * {
   padding: 13px 0 0;
 }
@@ -30,9 +31,9 @@ button {
     max-height: 107px;
     padding: 0 40px;
   }
-  .card > * {
+  /* .card > * {
     flex: 0 0;
-  }
+  } */
   .card > * + * {
     padding: 0;
   }

@@ -5,10 +5,14 @@ import { Karma } from './Karma';
 import { SaveButton } from './SaveButton';
 import { ShareButton } from './ShareButton';
 
-export function CardControls() {
+interface IControlsProps {
+  rating: string | number
+}
+
+export function CardControls({ rating }: IControlsProps) {
   return (
     <div className={styles.controls}>
-      <Karma/>
+      <Karma rating={rating} />
       <CommentsButton/>
       <div className={styles.actions}>
         <ShareButton/>

@@ -1,10 +1,14 @@
 import React from 'react';
 import styles from './dateinfo.css';
 
-export function DateInfo() {
+interface IDateProps {
+  data: any
+}
+
+export function DateInfo({data}: IDateProps) {
   return (
     <span className={styles.createdAt}>
           <span className={styles.publishedLabel}>опубликовано </span>
-          24 часа назад</span>
+          {data}</span>
   );
 }

@@ -1,17 +1,26 @@
 import React from 'react';
-import styles from './card.css';
 import { CardControls } from './CardControls';
 import { CardMenu } from './CardMenu';
 import { Preview } from './Preview';
 import { TextContent } from './TextContent';
+import styles from './card.css';
 
-export function Card() {
+interface ICardProps{
+  author: string,
+  title: string,
+  img: string,
+  avatar: string,
+  dataPostUtc: any,
+  rating: string | number
+}
+
+export function Card({ author,  title , img, avatar , dataPostUtc, rating }: ICardProps) {
   return (
     <li className= {styles.card}>
-      <TextContent/>
-      <Preview/>
+      <TextContent dataPostUtc={dataPostUtc} avatar={avatar} author = {author} title={title} />
+      <Preview prevImg = {img}/>
       <CardMenu/>
-      <CardControls/>
+      <CardControls rating={rating}/>
     </li>
 
   );
