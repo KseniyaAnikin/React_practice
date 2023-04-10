@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DateInfo } from './DateInfo';
 import styles from './textcontent.css';
+import { Post } from '../../../Post';
 
 interface ITextContentProps{
   author: string,
@@ -10,6 +11,8 @@ interface ITextContentProps{
 }
 
 export function TextContent({ author,  title, avatar, dataPostUtc}: ITextContentProps) {
+  const [ isModalOpen, setIsModalOpen ] = useState(false);
+
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
@@ -20,11 +23,14 @@ export function TextContent({ author,  title, avatar, dataPostUtc}: ITextContent
         </div>
         <DateInfo data={ dataPostUtc }/>
       </div>
-      <h2 className={styles.title}>
+      <h2 className={styles.title} onClick={()=>{ setIsModalOpen(true) }}>
         <a href="#post-url" className={styles.postLink}>
           { title }
         </a>
       </h2>
+      { isModalOpen && (
+        <Post/>
+      )}
     </div>
   );
 }

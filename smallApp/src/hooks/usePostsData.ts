@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { tokenContext } from "../shared/context/tokenContext";
+import { useEffect, useState } from "react";
 import { useToken } from "./useToken";
 
 export interface IPostsData{
@@ -17,6 +16,8 @@ export function usePostsData(){
 
   const [ data, setData ] = useState<Array<IPostsData>>([]);
   const [token] = useToken();
+  const ava = require('../assets/ava.jpg');
+  const prev = require('../assets/prev.jpg');
 
   useEffect(() =>{
     if(token && token.length > 0 && token !== "undefined"){
@@ -33,17 +34,18 @@ export function usePostsData(){
             rating: item.data.ups,
             avatar: item.data.sr_detail.icon_img
               ? item.data.sr_detail.icon_img
-              : "https://ltdfoto.ru/images/2023/01/20/IMAGE-2023-01-20-123147.th.jpg",
+              : ava,
             previewImg: item.data.preview
               ? item.data.preview.images?.[0].source.url.replace(
                 /(\&amp\;)/g,
                 "&"
               )
-              : "https://ltdfoto.ru/images/2023/01/20/IMAGE-2023-01-20-123142.jpg",
-            dataPostUtc: item.data.created_utc,
+              : prev,
+            dataPostUtc: new Date(item.data.created_utc).toLocaleDateString(),
           })
         );
         console.log('THIS IS DATA  ', postsData)
+        
         setData(postsData)
       })
       .catch(console.log)
