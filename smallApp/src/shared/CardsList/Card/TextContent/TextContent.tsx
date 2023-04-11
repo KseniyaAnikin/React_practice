@@ -29,7 +29,7 @@ export function TextContent({ author,  title, avatar, dataPostUtc}: ITextContent
         </a>
       </h2>
       { isModalOpen && (
-        <Post/>
+        <Post onClose={()=> { setIsModalOpen(false)}}/>
       )}
     </div>
   );
