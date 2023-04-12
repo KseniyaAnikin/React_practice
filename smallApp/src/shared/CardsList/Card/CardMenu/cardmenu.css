@@ -1,12 +1,13 @@
 .menu {
   position: absolute;
-  z-index: 100;
   top: 17px;
   right: 15px;
   padding: 0;
 }
 
 .menuButton {
+  position: relative;
+  z-index: 0; 
   width: 31px;
   height: 31px;
   display: flex;

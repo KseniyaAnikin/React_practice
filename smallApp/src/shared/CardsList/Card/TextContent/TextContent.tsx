@@ -8,9 +8,10 @@ interface ITextContentProps{
   title: string,
   avatar: string,
   dataPostUtc: string | number | object, 
+  id: number, 
 }
 
-export function TextContent({ author,  title, avatar, dataPostUtc}: ITextContentProps) {
+export function TextContent({ author,  title, avatar, dataPostUtc, id}: ITextContentProps) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
 
   return (
@@ -29,7 +30,7 @@ export function TextContent({ author,  title, avatar, dataPostUtc}: ITextContent
         </a>
       </h2>
       { isModalOpen && (
-        <Post onClose={()=> { setIsModalOpen(false)}}/>
+        <Post id={id} onClose={()=> { setIsModalOpen(false)}}/>
       )}
     </div>
   );

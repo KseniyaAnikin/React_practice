@@ -2,7 +2,7 @@ import React from "react";
 import { usePostsData } from "../../hooks/usePostsData";
 
 export interface IPostsContextData {
-  id: string,
+  id: number,
   author: string,
   title: string,
   rating: string | number,

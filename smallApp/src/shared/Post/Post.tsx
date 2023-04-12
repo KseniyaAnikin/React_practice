@@ -1,18 +1,22 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './post.css';
 import ReactDOM from 'react-dom';
+import { useCommentData } from '../../hooks/useCommentData';
 
 interface IPost{
   onClose?: ()=>void;
+  id: number,
 }
 
-export function Post( props: IPost) {
+export function Post( { onClose, id }: IPost) {
   const ref = useRef<HTMLDivElement>(null);
+
+  const [data] = useCommentData(id);
 
   useEffect(()=>{
     function handleClick(event: MouseEvent){
       if(event.target instanceof Node && !ref.current?.contains(event.target)){
-        props.onClose?.();
+        onClose?.();
       }
     }
     document.addEventListener('click', handleClick );

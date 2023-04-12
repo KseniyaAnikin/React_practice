@@ -1,24 +1,27 @@
 import React from 'react';
-import { BlockIcon, WarningIcon } from '../../../../Icons';
-import { EColors, Text } from '../../../../Text';
+import ReactDOM from 'react-dom';
+import { generateId } from '../../../../../utils/react/generateRandomIndex';
+import { GenericList } from '../../../../GenericList';
+import { EIcons, Icon } from './Icon';
 import styles from './menuitemslist.css';
 
+const LIST = [
+  { As: 'li' as const, text: <><Icon size={16} svg={EIcons.comments}/> <span>Комментарии</span> <div className={styles.divider}/> </> , className: 'list-item hide' },
+  { As: 'li' as const, text: <><Icon size={16} svg={EIcons.share}/> <span>Поделиться</span> <div className={styles.divider}/></>, className: 'list-item hide'},
+  { As: 'li' as const, text: <><Icon size={16} svg={EIcons.block}/><span>Скрыть</span><div className={styles.divider}/></>, className: 'list-item'},
+  { As: 'li' as const, text: <><Icon size={16} svg={EIcons.save}/><span>Сохранить</span><div className={styles.divider}/></>, className: 'list-item hide'},
+  { As: 'li' as const, text: <><Icon size={16} svg={EIcons.warning}/><span>Пожаловаться</span></>, className: 'list-item'},
+  {As: 'li' as const, text: 'Закрыть', className: 'list-item last-item',}
+].map(generateId)
+
 export function MenuItemsList() {
-  return (
-    <ul className={styles.menuItemsList}>
-      <li className={styles.menuItem}>
-        <BlockIcon/>
-        <Text size={12} color={EColors.gray99}>Скрыть</Text>
-      </li>
 
-      <div className={styles.divider}/>
+  const node = document.querySelector('#cardbtn');
+  if(!node) return null;
 
-      <li className={styles.menuItem}>
-        <WarningIcon/>
-        <Text size={12} color={EColors.gray99}>Пожаловаться</Text>
-      </li>
-
-    </ul>
-
-  );
+  return ReactDOM.createPortal(
+    (
+      <GenericList list={LIST} className={styles.menuItemsList}/>
+    ), node
+  ); 
 }

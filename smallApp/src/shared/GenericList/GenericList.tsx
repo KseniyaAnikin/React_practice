@@ -12,13 +12,14 @@ interface IItem {
 
 interface IGenericListProps {
   list: IItem[];
+  className?: string
 }
 
 const NOOP = () =>{}
 
-export function GenericList({ list }: IGenericListProps) {
+export function GenericList({list, className} : IGenericListProps) {
   return (
-    <ul>
+    <ul className={className}>
     {list.map(({As = 'div',id, text, onClick = NOOP, className , href})=>(
       <As 
         className={className}

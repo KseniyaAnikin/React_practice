@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useToken } from "./useToken";
 
 export interface IPostsData{
-  id: string,
+  id: number,
   author: string,
   title: string,
   rating: string | number,

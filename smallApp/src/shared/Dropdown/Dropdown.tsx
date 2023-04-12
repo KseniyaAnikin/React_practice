@@ -16,15 +16,12 @@ export function Dropdown({button, children, isOpen, onClose = noop, onOpen = noo
 
   const [ isDropdownOpen, setIsDropdownOpen ] = useState(false);
 
-  const node =document.querySelector('#dd_root');
-  if(!node) return null;
-
   return (
   <div className={styles.container}>
       <div onClick={() => { setIsDropdownOpen(true) }}>{button}</div>
 
       {isDropdownOpen && (
-        <div className={styles.listContainer}>
+        <div className={styles.listContainer} >
           <div className={styles.list} onClick={()=> setIsDropdownOpen(false)}>
             { children }
           </div>
