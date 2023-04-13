@@ -11,7 +11,7 @@ interface IPost{
 export function Post( { onClose, id }: IPost) {
   const ref = useRef<HTMLDivElement>(null);
 
-  const [data] = useCommentData(id);
+  // const [data] = useCommentData(id);
 
   useEffect(()=>{
     function handleClick(event: MouseEvent){

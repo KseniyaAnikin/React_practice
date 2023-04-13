@@ -26,6 +26,7 @@ export function usePostsData(){
         headers: { Authorization: `bearer ${token}`}
       })
       .then((resp)=> {
+        console.log(resp);
         const postsData = resp.data.data.children.map(
           (item: {data: any}) => ({
             id: item.data.id,
@@ -44,8 +45,6 @@ export function usePostsData(){
             dataPostUtc: new Date(item.data.created_utc).toLocaleDateString(),
           })
         );
-        console.log('THIS IS DATA  ', postsData)
-        
         setData(postsData)
       })
       .catch(console.log)
