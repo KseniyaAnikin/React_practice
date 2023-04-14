@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './dropdown.css';
 import ReactDOM from 'react-dom';
 
@@ -7,19 +7,16 @@ interface IDropdownProps {
   children: React.ReactNode; //что выпадает из списка (React-компонент)
   isOpen?: boolean;
   onClick: () => void;
-  btnRect: Array<number>;
+  // btnRect: Array<number>;
 }
 
-export function Dropdown({button, children, isOpen, onClick, btnRect }: IDropdownProps) {
-  console.log(btnRect)
+export function Dropdown({button, children, isOpen, onClick}: IDropdownProps) {
+
   const [ isDropdownOpen, setIsDropdownOpen ] = useState(false);
-  // let posStyle = {}
 
   useEffect(() => {
     if(isOpen) {
       setIsDropdownOpen(!isDropdownOpen); 
-      // console.log(btnRect)
-      // posStyle = {left: btnRect[0], top: btnRect[1] + btnRect[2]}
     };
     if(!isOpen) setIsDropdownOpen(isDropdownOpen)
   }, [isOpen]);
@@ -28,10 +25,9 @@ export function Dropdown({button, children, isOpen, onClick, btnRect }: IDropdow
   <div className={styles.container} >
       <div>{button}</div>
 
-      { isDropdownOpen && (
+      { isOpen && ( 
         <div className={styles.listContainer}  
-        // style={posStyle}
-        
+        // style={{left: `${btnRect[1]-btnRect[3]-30}px`, top: `${btnRect[2] + btnRect[0]+20}px`}} 
         >
           <div className={styles.list}  onClick={()=> {
             onClick();

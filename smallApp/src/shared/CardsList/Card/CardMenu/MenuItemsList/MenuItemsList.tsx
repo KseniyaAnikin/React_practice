@@ -14,14 +14,20 @@ const LIST = [
   {As: 'li' as const, text: 'Закрыть', className: 'list-item last-item',}
 ].map(generateId)
 
-export function MenuItemsList() {
+interface IMenuItemsList{
+  btnRect: Array<number>;
+}
+
+export function MenuItemsList( { btnRect }: IMenuItemsList) {
 
   const node = document.querySelector('#dd_root');
   if(!node) return null;
 
   return ReactDOM.createPortal(
     (
-      <GenericList list={LIST} className={styles.menuItemsList}/>
+      <div style={{position: 'absolute',left: `${btnRect[1]-btnRect[3]-30}px`, top: `${btnRect[2] + btnRect[0]+20}px`}}>
+      <GenericList list={LIST} className={styles.menuItemsList}  />
+      </div>
     ), node
   ); 
 }

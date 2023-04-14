@@ -13,19 +13,19 @@ export function CardMenu() {
     if (isOpen) {
       if (!btnRef.current) return;
     const rect = btnRef.current.getBoundingClientRect();
-    setBtnRect([rect.left, rect.top, rect.height]);
+    setBtnRect([rect.height, rect.left, rect.top, rect.width]);
     }
   }, [isOpen])
 
     return (
       <div className={styles.menu} >
-        <Dropdown {...{onClick: () => setOpen(!isOpen), isOpen, btnRect }}
+        <Dropdown {...{onClick: () => setOpen(!isOpen), isOpen }}
           button = {
             <button className={styles.menuButton} ref ={btnRef} onClick={()=>{ setOpen(!isOpen) }}>
               <MenuIcon/>
             </button>
           } >            
-          <MenuItemsList/>
+          <MenuItemsList btnRect={btnRect}/>
         </Dropdown>
       </div>
     );
