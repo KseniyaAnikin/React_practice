@@ -18,7 +18,7 @@ interface ICardProps{
 export function Card({ author,  title , img, avatar , dataPostUtc, rating, num }: ICardProps) {
   return (
     <li className= {styles.card} id={'cardbtn'}>
-      <TextContent dataPostUtc={dataPostUtc} avatar={avatar} author = {author} title={title} id={num} />
+      <TextContent rating={rating} dataPostUtc={dataPostUtc} avatar={avatar} author = {author} title={title} id={num} />
       <Preview prevImg = {img}/>
       <CardMenu/>
       <CardControls rating={rating}/>

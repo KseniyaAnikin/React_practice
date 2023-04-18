@@ -9,28 +9,22 @@ interface ITextContentProps{
   avatar: string,
   dataPostUtc: string | number | object, 
   id: number, 
+  rating: string | number,
 }
 
-export function TextContent({ author,  title, avatar, dataPostUtc, id}: ITextContentProps) {
+export function TextContent({ author,  title, avatar, dataPostUtc, id, rating}: ITextContentProps) {
   const [ isModalOpen, setIsModalOpen ] = useState(false);
 
   return (
     <div className={styles.textContent}>
-      <div className={styles.metaData}>
-        <div className={styles.userLink}>
-          <img className={styles.avatar}
-            src={avatar} alt="avatar" />
-          <a href="#user-url" className={styles.username}>{ author }</a>
-        </div>
-        <DateInfo data={ dataPostUtc }/>
-      </div>
+        <DateInfo data={ dataPostUtc } avatar={avatar} author={author}/>
       <h2 className={styles.title} onClick={()=>{ setIsModalOpen(true) }}>
         <a href="#post-url" className={styles.postLink}>
           { title }
         </a>
       </h2>
       { isModalOpen && (
-        <Post id={id} onClose={()=> { setIsModalOpen(false)}}/>
+        <Post avatar={avatar} author={author} dataPostUtc={dataPostUtc} rating={rating} title={title} id={id} onClose={()=> { setIsModalOpen(false)}}/>
       )}
     </div>
   );

@@ -12,6 +12,7 @@
   min-width: 200px;
   min-height: 160px;
   max-width: 80%;
+  max-height: 80vh;
   padding: 24px;
   margin-bottom: 25px;
 }
@@ -27,3 +28,17 @@
   margin: -24px;
   color: #000
 } 
+
+.postHead{
+  display: flex;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--greyEC);
+}
+
+.commentsList > li {
+  margin-bottom: 30px;
+}

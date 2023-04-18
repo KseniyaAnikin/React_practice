@@ -16,8 +16,8 @@ export function usePostsData(){
 
   const [ data, setData ] = useState<Array<IPostsData>>([]);
   const [token] = useToken();
-  const ava = require('../assets/ava.jpg');
-  const prev = require('../assets/prev.jpg');
+  const ava = require('../assets/ava.jpg').default;
+  const prev = require('../assets/prev.jpg').default;
 
   useEffect(() =>{
     if(token && token.length > 0 && token !== "undefined"){

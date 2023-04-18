@@ -1,0 +1,16 @@
+.commentBtnsList{
+  display: flex;
+}
+
+.commentBtn:not(:last-child){
+  margin-right: 20px;
+}
+
+.commentBtn{
+  display: flex;
+  align-items: center;
+}
+
+.btnText{
+  margin-left: 5px;
+}
