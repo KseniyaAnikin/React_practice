@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import styles from './comment.css';
+import React from 'react';
 import { DateInfo } from '../../CardsList/Card/TextContent/DateInfo';
 import { CommentsIcon, ShareIcon, WarningIcon } from '../../Icons';
-import { CommentForm } from '../CommentForm';
+import styles from './comment.css';
 
 interface IComment{
   author: string,
@@ -12,8 +11,7 @@ interface IComment{
   onAnswer: () => void;
 }
  export function Comment({ onAnswer, author, data, text, avatar}: IComment) {
-  // const [isAnswer, setAnswer] = useState(false);
- 
+
   return (
     <li>
       <DateInfo data={data} avatar={avatar} author={author}/>

@@ -1,37 +1,26 @@
-import React, { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useRef } from 'react';
 import styles from './commentform.css';
 
-
 interface ICommentForm{
-  isAnswer?: boolean,
   name?: string,
+  value: string,
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>)=> void,
+  onSubmit: (event: FormEvent)=> void,
 }
 
-export function CommentForm({isAnswer, name}: ICommentForm) {
-  const [ value, setValue ] = useState('');
+export function CommentForm({ name, value, onChange, onSubmit}: ICommentForm) {
+  
   const formRef = useRef<HTMLTextAreaElement>(null);
-
+  
   useEffect(() => {
     if(name) {
-      setValue(`${name}, оставьте ваш комментарий`); 
       formRef.current?.focus()
     };
-    if(!name) 
-    setValue(value)
-  }, [isAnswer]);
-
-  function handleChange(event: ChangeEvent<HTMLTextAreaElement>){
-    setValue(event.target.value);
-  }
-
-  function handleSubmit(event: FormEvent){
-    event.preventDefault();
-    console.log(value)
-  }
+  }, [name]);
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <textarea className={styles.input} value={value} onChange={handleChange} ref={formRef}/>
+    <form className={styles.form} onSubmit={onSubmit}>
+      <textarea className={styles.input} value={value} onChange={onChange} ref={formRef}/>
       <button type='submit' className={styles.button}>Комментировать</button>
     </form>
   );

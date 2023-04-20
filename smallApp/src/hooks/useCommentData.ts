@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { tokenContext } from "../shared/context/tokenContext";
+import { useToken } from "./useToken";
 
 interface ICommentData {
   data: {
@@ -15,10 +16,10 @@ interface ICommentData {
 export function useCommentData(props: number){
 
   const [ data, setData ] = useState<Array<ICommentData>>([]);
-  const token = useContext(tokenContext)
+  const token = useToken(); 
 
   useEffect(()=>{
-    if(token && token.length > 0 && token!=="undefined"){
+    if(token && token.length > 0){
       axios.get(`https://oauth.reddit.com/comments/${props}`,
       {
         headers: { Authorization: `bearer ${token}`}
