@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useToken } from "./useToken";
+// import { useToken } from "./useToken";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/reduser";
 
 export interface IPostsData{
   id: number,
@@ -15,12 +17,12 @@ export interface IPostsData{
 export function usePostsData(){
 
   const [ data, setData ] = useState<Array<IPostsData>>([]);
-  const [token] = useToken();
+  const token =  useSelector<RootState>(state => state.token);
   const ava = require('../assets/ava.jpg').default;
   const prev = require('../assets/prev.jpg').default;
 
   useEffect(() =>{
-    if(token && token.length > 0 && token !== "undefined"){
+    if(token && token !== "undefined"){
       axios.get('https://oauth.reddit.com/best.json?sr_detail=true&limit=5',
       {
         headers: { Authorization: `bearer ${token}`}

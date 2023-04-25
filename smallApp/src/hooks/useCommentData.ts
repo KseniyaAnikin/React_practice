@@ -1,7 +1,7 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { tokenContext } from "../shared/context/tokenContext";
-import { useToken } from "./useToken";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/reduser";
 
 interface ICommentData {
   data: {
@@ -16,10 +16,10 @@ interface ICommentData {
 export function useCommentData(props: number){
 
   const [ data, setData ] = useState<Array<ICommentData>>([]);
-  const token = useToken(); 
+  const token =  useSelector<RootState>(state => state.token);
 
   useEffect(()=>{
-    if(token && token.length > 0){
+    if(token){
       axios.get(`https://oauth.reddit.com/comments/${props}`,
       {
         headers: { Authorization: `bearer ${token}`}
