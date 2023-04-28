@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { applyMiddleware, legacy_createStore as createStore } from 'redux';
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
@@ -19,13 +19,15 @@ export const store = createStore( rootReducer, composeWithDevTools(
 
 function AppComponent(){
 
+  const dispatch = useDispatch()
+
   useEffect(()=>{
-    store.dispatch<any>(saveToken())
+    dispatch<any>(saveToken())
   }, []
   )
 
   return(
-    <Provider store={store}>
+    // <Provider store={store}>
       <UserContextProvider>
         <PostsContextProvider>
           <Layout>
@@ -36,8 +38,8 @@ function AppComponent(){
           </Layout>
         </PostsContextProvider>
       </UserContextProvider>
-    </Provider>
+    // </Provider>
   )
 }
 
-export const App = hot(()=> <AppComponent/>);
+export const App = hot(()=> <Provider store={store}><AppComponent/></Provider>);
