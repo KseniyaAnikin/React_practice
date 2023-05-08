@@ -5,22 +5,11 @@ import { useFormik } from 'formik';
 interface ICommentForm{
   name?: string,
   value: string,
-  // onChange: (event: ChangeEvent<HTMLTextAreaElement>)=> void,
-  // onSubmit: (event: FormEvent)=> void,
+  onChange: (event: ChangeEvent<HTMLTextAreaElement>)=> void,
+  onSubmit: (event: FormEvent)=> void,
 }
 
-const validate = (values: {commentForm: string}) => {
-  const errors = { commentForm : '' };
-
-  if (!values.commentForm) {
-    errors.commentForm = 'leave a comment, please';
-  } else if (values.commentForm.length < 1) {
-    errors.commentForm = 'Must be more than 1 letter';
-  }
-  return errors;
-};
-
-export function CommentForm({ name }: ICommentForm) {
+export function CommentForm({ name, onChange, onSubmit}: ICommentForm) {
 
   const [ person, setPerson ] = useState('');
   
@@ -38,10 +27,18 @@ export function CommentForm({ name }: ICommentForm) {
     initialValues: {
       commentForm : '' ,
     },
-    validate,
-    onSubmit: values => {
-      // alert(JSON.stringify(values, null, 2));
-      console.log('OK', values);
+    validate(values){
+      const errors = {commentForm : '' , };
+      if (!values.commentForm) {
+            errors.commentForm = 'leave a comment, please';
+            return errors;
+      }
+      
+    },
+    onSubmit:(values, { resetForm })=> {
+      alert("Ваш комментарий отправлен");
+      resetForm()
+      console.log('values-', values.commentForm);
     },
   });
 
@@ -51,9 +48,9 @@ export function CommentForm({ name }: ICommentForm) {
         className={styles.input}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.commentForm}/>
+        value={formik.values.commentForm ? formik.values.commentForm : `${person} оставьте ваш комментарий`}/>
         { formik.touched.commentForm && formik.errors.commentForm ? (
-         <div>{formik.errors.commentForm}</div>
+         <div>{formik.errors.commentForm }</div>
        ) : null }
       <button type="submit" className={styles.button}>Комментировать</button>
     </form>

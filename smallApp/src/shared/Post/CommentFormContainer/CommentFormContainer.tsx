@@ -23,8 +23,8 @@ export function CommentFormContainer({ name }: ICommentFormContainer) {
   return (
     <CommentForm
       value = {value}
-      // onChange = { handleChange }
-      // onSubmit = { handleSubmit }
+      onChange = { handleChange }
+      onSubmit = { handleSubmit }
       name={name}
     />
   );
