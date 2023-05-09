@@ -9,7 +9,7 @@ interface ICommentForm{
   onSubmit: (event: FormEvent)=> void,
 }
 
-export function CommentForm({ name, onChange, onSubmit}: ICommentForm) {
+export function CommentForm({ name, onChange, onSubmit }: ICommentForm) {
 
   const [ person, setPerson ] = useState('');
   
